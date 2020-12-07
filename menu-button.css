@@ -1,0 +1,50 @@
+.container {
+	grid-area: modalBtn;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 20px;
+  height: 2.5px;
+	background-color: white;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+  /* -webkit-transform: rotate(-45deg) translate(-10px, 6px); */
+  transform: rotate(-45deg) translate(-4px, 5px);
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+  /* -webkit-transform: rotate(45deg) translate(-8px, -8px); */
+  transform: rotate(45deg) translate(-3px, -4px);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
