@@ -11,8 +11,26 @@
 </head>
 
 <body>
+	<div id = 'add-todo-modal' class = 'add-todo-modal add-todo-modal-off'>
+		<div id = "modal-content" class = "modal-content">
+			<div class = "close-btn">&times;</div>
+			<h3>Add Task</h3>
+		<form class = "modal-form" id = "todo-form">
+			<input id = "todo-title" required type="text" placeholder="Title">
+			<textarea rows="10"id = "todo-description" placeholder = "Description..."></textarea>
+			<p>Priority</p>
+			<input type="radio" name="priority" id="high-prio" value='high'>
+			<label for="high-prio">High</label>
+			<input type="radio" name="priority" id="medium-prio" value = 'medium'>
+			<label for="medium-prio">Medium</label>
+			<input type="radio" name="priority" id="low-prio" value = 'low'>
+			<label for="low-prio">Low</label>
+			<button id="submit-todo">Add</button>
+		</form>
+		</div>
+	</div>
 	<div class="topbar">
-		<button class="add">+</button>
+		<button id = "add" class="add">+</button>
 		<div id="modal-toggle-btn" class="container">
 			<div class='bar1'></div>
 			<div class='bar2'></div>
@@ -63,6 +81,7 @@
 	<script src="ui-project-toggle.js"></script>
 	<script src="ui-task-toggle.js"></script>
 	<script src="project-add-toggle.js"></script>
+	<script src="todo-add-toggle.js"></script>
 	<script src="main.js"></script>
 </body>
 
