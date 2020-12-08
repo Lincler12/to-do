@@ -135,7 +135,10 @@ div.content {
 .project-wrapper-off {
   display: none !important;
 }
-
+.project-wrapper {
+  min-height: 100%;
+  overflow-y: auto;
+}
 #project-row {
   height: auto;
   width: 100%;
@@ -195,7 +198,7 @@ div.task-name {
   align-items: flex-end;
 }
 
-#get-project-name {
+.get-project-name {
   position: absolute;
   grid-column-start: 1;
   grid-column-end: 3;
@@ -206,8 +209,12 @@ div.task-name {
   background-color: hsla(0, 0%, 83%, 0.8);
   box-shadow: 1px 1px 3px #999999;
   padding: 20px 10px;
-  display: none;
   /* display: none; */
+  /* display: none; */
+}
+
+.get-project-name-off {
+  display: none;
 }
 
 input#project-name {
