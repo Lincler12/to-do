@@ -1,19 +1,24 @@
-import {Todo} from "./Todo";
-
 class Project {
   static id = 1;
-  todoList = [];
+  _todoList = [];
+  _id;
+  get id() {
+    return this._id;
+  }
+  _name;
+  get name() {
+    return this._name;
+  }
+  set name(value) {
+    this._name = value;
+  }
   constructor(name) {
-    this._id = project.id;
-    project.id++;
+    this._id = Project.id;
+    Project.id++;
     this._name = name;
   }
-  createTodo() {
-    const todo = new Todo(title, description, duedate, priority, notes, checklist);
-    this.todoList.push(todo);
-  }
+
   deleteTodo() {}
 }
 
-
-export {Project};
+export { Project };

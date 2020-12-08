@@ -1,10 +1,7 @@
-import { Project } from "./Project";
-
 class MainApp {
   _projectList = [];
 
-  createProject = (name) => {
-    project = new Project(name);
+  addProject = (project) => {
     this._projectList.push(project);
   };
 
