@@ -162,12 +162,16 @@ div.project-header {
   margin-bottom: 10px;
 }
 
+div.project-header button {
+  text-transform: capitalize;
+}
 .task-wrapper-off {
   display: none;
 }
 #toggle-projects-btn,
 .toggle-task-btn {
   cursor: pointer;
+  height: 20px;
 }
 div.task {
   display: grid;
