@@ -1,8 +1,5 @@
 const todoAddToggle = (() => {
   const modal = document.getElementById("add-todo-modal");
-  const modalContent = document.getElementById("modal-content");
-  const radioElements = document.getElementsByName("priority");
-  const todoDescription = document.getElementById("todo-description");
   const toggleModalBtn = document.getElementById("add");
   const closeBtn = modal.querySelector(".close-btn");
   function modalToggle() {
