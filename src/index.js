@@ -22,5 +22,21 @@ const appController = (() => {
     projectUI.closeProjectInputName();
   });
 
-  function deleteProject(id) {}
+  function deleteProject(id) {
+    console.log(mp.projectList);
+    mp.removeProject(id);
+    projectUI.removeProject(id);
+    console.log(mp.projectList);
+  }
+
+  projectUI.projectWrapper.addEventListener("click", (e) => {
+    if (e.target.dataset.id === "remove-project") {
+      const projectHeader = e.target.parentNode;
+      const projectRow = projectHeader.parentNode;
+      const li = projectRow.parentNode;
+      const id = li.id.split("-")[1];
+      deleteProject(parseInt(id));
+      //more clean way would be having the same id number in data-id as the li id
+    }
+  });
 })();

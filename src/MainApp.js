@@ -12,10 +12,16 @@ class MainApp {
       }
     });
   };
+
+  removeProject = (id) => {
+    this._projectList = this._projectList.filter(
+      (project) => project.id !== id
+    );
+  };
+
   get projectList() {
     return this._projectList;
   }
-  deleteProject() {}
 }
 
 export { MainApp };

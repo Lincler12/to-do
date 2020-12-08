@@ -4,9 +4,19 @@ const projectUI = (() => {
   const inputElement = document.getElementById("project-name");
   const getProjectName = document.getElementById("get-project-name");
   const sidenav = document.getElementById("sidenav");
+
   function closeProjectInputName() {
     input.value = "";
     toggleProjectNameInput();
+  }
+
+  function removeProject(id) {
+    const liElements = projectWrapper.querySelectorAll("li");
+    liElements.forEach((liElement) => {
+      if (liElement.id === `project-${id}`) {
+        liElement.remove();
+      }
+    });
   }
   function createProjectUI(name, id) {
     const li = document.createElement("li");
@@ -28,8 +38,13 @@ const projectUI = (() => {
           const projectName = document.createElement("button");
           projectName.dataset.id = "project-name";
           projectName.textContent = name;
+          const removeProjectBtn = document.createElement("button");
+          removeProjectBtn.textContent = "-";
+          removeProjectBtn.classList.add("remove-project");
+          removeProjectBtn.dataset.id = "remove-project";
           projectHeader.appendChild(toggleTaskBtn);
           projectHeader.appendChild(projectName);
+          projectHeader.appendChild(removeProjectBtn);
         }
         // projectRow.appendChild(projectHeader);
         const taskWrapper = document.createElement("div");
@@ -60,6 +75,8 @@ const projectUI = (() => {
     addProjectForm,
     inputElement,
     closeProjectInputName,
+    removeProject,
+    projectWrapper,
   };
 })();
 
