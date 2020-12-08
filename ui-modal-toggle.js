@@ -1,4 +1,4 @@
-const modal = () => {
+const modal = (() => {
   const modalContentElement = document.getElementById("sidenav");
   const modalToggleElement = document.getElementById("modal-toggle-btn");
   const modalTaskName = document.querySelectorAll(".task-name");
@@ -20,6 +20,4 @@ const modal = () => {
   }
   modalToggleElement.addEventListener("click", toggleModal);
   modalToggleElement.addEventListener("click", changeBars);
-};
-
-modal();
+})();
