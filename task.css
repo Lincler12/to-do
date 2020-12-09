@@ -1,0 +1,53 @@
+div.content {
+  grid-area: content;
+  padding: 25px 10px;
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 300px);
+  grid-template-columns: repeat(auto-fill, 250px);
+  gap: 50px;
+  justify-content: center;
+  overflow: auto;
+  min-height: 100%;
+}
+
+.card {
+  height: 300px;
+  width: 250px;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  box-shadow: 1px 1px 10px #999999;
+}
+
+.card-header {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-areas: "button1 title button2";
+  justify-items: center;
+  align-items: center;
+  background-color: red;
+  color: white;
+}
+.card-header h4 {
+  grid-area: title;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-header .button2 {
+  grid-area: button2;
+  background-color: transparent;
+  color: white;
+  height: 100%;
+}
+
+.card-header .button1 {
+  grid-area: button1;
+}
+
+.card-body {
+  padding: 20px 10px;
+  font-size: 16px;
+  resize: none;
+}
