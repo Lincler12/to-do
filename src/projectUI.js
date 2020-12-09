@@ -6,8 +6,17 @@ const projectUI = (() => {
   const sidenav = document.getElementById("sidenav");
 
   function closeProjectInputName() {
-    input.value = "";
-    toggleProjectNameInput();
+    addProjectForm.reset();
+    const getProjectName = document.getElementById("get-project-name");
+    getProjectName.classList.toggle("get-project-name-off");
+  }
+  function getProject(id) {
+    const liElements = projectWrapper.querySelectorAll("li");
+    liElements.forEach((liElement) => {
+      if (liElement.id === `project-${id}`) {
+        return liElement;
+      }
+    });
   }
 
   function removeProject(id) {
@@ -70,6 +79,20 @@ const projectUI = (() => {
     projectWrapper.appendChild(li);
   }
 
+  function addProjectToTaskForm(id, name) {
+    const todoFormProject = document.getElementById("todo-form-projects");
+    const option = document.createElement("option");
+    option.value = id;
+    option.id = `project-${id}`;
+    option.textContent = name;
+    todoFormProject.appendChild(option);
+  }
+
+  function removeProjectFromTaskForm(id) {
+    const optionElement = document.getElementById(`project-${id}`);
+    optionElement.remove();
+  }
+
   return {
     createProjectUI,
     addProjectForm,
@@ -77,6 +100,9 @@ const projectUI = (() => {
     closeProjectInputName,
     removeProject,
     projectWrapper,
+    getProject,
+    removeProjectFromTaskForm,
+    addProjectToTaskForm,
   };
 })();
 
