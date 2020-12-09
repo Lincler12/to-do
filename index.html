@@ -20,17 +20,23 @@
 				<input id="todo-title" required type="text" placeholder="Title">
 				<textarea rows="10" id="todo-description" placeholder="Add Notes..."></textarea>
 				<p>Priority</p>
-				<input type="radio" required name="priority" id="high-prio" value='high'>
-				<label id = "high-prio" for="high-prio">High</label>
-				<input type="radio" name="priority" id="medium-prio" value='medium'>
-				<label id = "medium-prio" for="medium-prio">Medium</label>
-				<input type="radio" name="priority" id="low-prio" value='low'>
-				<label id = "low-prio" for="low-prio">Low</label>
+				<div>
+					<input type="radio" required name="priority" id="high-prio" value='high'>
+					<label id="high-prio" for="high-prio">High</label>
+				</div>
+				<div>
+					<input type="radio" checked name="priority" id="medium-prio" value='medium'>
+					<label id="medium-prio" for="medium-prio">Medium</label>
+				</div>
+				<div>
+					<input type="radio" name="priority" id="low-prio" value='low'>
+					<label id="low-prio" for="low-prio">Low</label>
+				</div>
 				<div class="project-list-label">
-				<label for="projects">Choose a project</label>
-			</div>
+					<label for="projects">Choose a project</label>
+				</div>
 				<select id="todo-form-projects" name="todo-form-projects">
-					<option value="project-0">Default</option>
+					<option id = "option-0" value='0'>Default</option>
 					<!-- <option value="">Saab</option>
 					<option value="fiat">Fiat</option>
 					<option value="audi">Audi</option> -->
@@ -65,20 +71,14 @@
 			<li>
 				<div id="project-row" class="project-row">
 					<div class="project-header">
-						<img class="toggle-task-btn" data-id='homework' src="./images/icons8-expand-arrow-16.png" alt="">
+						<img class="toggle-task-btn"  src="./images/icons8-expand-arrow-16.png" alt="">
 						<button data-id="project-name">Homework</button>
 						<button data-id='remove-project' class="remove-project">-</button>
 					</div>
-					<div class="task-wrapper task-wrapper-off" data-id='homework'>
+					<div class="task-wrapper task-wrapper-off" data-id='task-wrapper'>
 						<div class="task">
 							<div class="priority-icon"></div>
 							<div class="task-name"> Do the dishes</div>
-						</div>
-						<div class="task-wrapper">
-							<div class="task">
-								<div class="priority-icon"></div>
-								<div class="task-name"> Do the dishes faef asef ase f</div>
-							</div>
 						</div>
 					</div>
 				</div>
