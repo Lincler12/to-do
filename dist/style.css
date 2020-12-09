@@ -127,10 +127,6 @@ div.sidenav ul li button {
 div.sidenav ul li button:hover {
   color: #222222;
 }
-div.content {
-  grid-area: content;
-  padding: 25px 10px;
-}
 
 .project-wrapper-off {
   display: none !important;

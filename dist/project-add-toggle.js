@@ -1,4 +1,4 @@
-const projectAddToggle = () => {
+const projectAddToggle = (() => {
   const getProjectName = document.getElementById("get-project-name");
   const addProjectBtn = document.getElementById("add-project-btn");
   const closeBtn = getProjectName.querySelector(".close-btn");
@@ -27,4 +27,4 @@ const projectAddToggle = () => {
   });
   addProjectBtn.addEventListener("click", toggleProjectNameInput);
   closeBtn.addEventListener("click", closeProjectInputName);
-};
+})();
