@@ -18,6 +18,10 @@ class Project {
     this._name = name;
   }
 
+  addTodo = (todo) => {
+    this._todoList.push(todo);
+  };
+
   deleteTodo() {}
 }
 

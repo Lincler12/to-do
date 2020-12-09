@@ -3,21 +3,21 @@ class priority {
     return {
       color: "red",
       value: 0,
-      text: "High",
+      text: "high",
     };
   }
   static get MEDIUM() {
     return {
       color: "yellow",
       value: 1,
-      text: "Medium",
+      text: "medium",
     };
   }
   static get LOW() {
     return {
       color: "green",
       value: 2,
-      text: "Low",
+      text: "low",
     };
   }
 }

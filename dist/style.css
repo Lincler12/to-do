@@ -122,7 +122,7 @@ div.sidenav ul li button {
   font-size: 14px;
   background-color: transparent;
   cursor: pointer;
-  margin-left: 15px;
+  /* margin-left: 15px; */
 }
 div.sidenav ul li button:hover {
   color: #222222;
@@ -153,13 +153,19 @@ div.sidenav ul li button:hover {
 }
 
 div.project-header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 5fr 0.5fr;
   align-content: center;
   margin-bottom: 10px;
+  margin-left: 10px;
+  gap: 10px;
 }
 
-button.remove-project {
-  margin-left: auto !important;
+[data-id="project-name"] {
+  justify-self: start;
+  overflow: auto;
+  width: 100%;
+  text-align: left;
 }
 
 div.project-header button {

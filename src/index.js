@@ -61,21 +61,53 @@ const appController = (() => {
 
   const tasks = (() => {
     function addTask(projectId, taskName, taskDescr, taskPrio) {
-      let task = new Todo(taskName, taskDescr, taskPrio);
-
-      const projectLiElement = projectUI.getProject(projectId);
+      let task = new Todo(taskName, taskDescr, taskPrio, projectId);
+      console.table(mp.projectList);
+      let array = mp.projectList;
+      // let findElement = mp.projectList.find((e) => e.id > 20);
+      for (let i = 0; i < array.length; i++) {
+        if (array[i].id === projectId) {
+          array[i].addTodo(task);
+          break;
+        }
+      }
+      // mp.projectList
+      //   .find((projectArrayElement) => projectArrayElement.id === projectId)
+      //   .addToDo(task); //reference to object inside the array
+      const taskDOMNavElement = taskUI.createTaskNavBar(
+        task.id,
+        task.title,
+        task.priority
+      );
+      const taskWrapper = projectUI.getTaskWrapper(projectId);
+      taskWrapper.appendChild(taskDOMNavElement);
     }
 
-    function getTitle() {}
-    function getDescr() {}
-    function getPrio() {}
-    function getProjectId() {}
+    function getTitle() {
+      return taskUI.formTitleElement.value;
+    }
+    function getDescr() {
+      return taskUI.formDescriptionElement.value;
+    }
+    function getPrio() {
+      let elements = taskUI.formPriorityElements;
+      let checkedValue;
+      elements.forEach((element) => {
+        if (element.checked) {
+          checkedValue = element.value;
+        }
+      });
+      return checkedValue;
+    }
+    function getProjectId() {
+      let element = taskUI.formProjectElement;
+      return parseInt(element.value);
+    }
 
     taskUI.addTodoForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      let name = getName();
-      addProject(name);
-      projectUI.closeProjectInputName();
+      addTask(getProjectId(), getTitle(), getDescr(), getPrio());
+      taskUI.closeTaskInputForm();
     });
   })();
 })();

@@ -12,11 +12,14 @@ const projectUI = (() => {
   }
   function getProject(id) {
     const liElements = projectWrapper.querySelectorAll("li");
-    liElements.forEach((liElement) => {
-      if (liElement.id === `project-${id}`) {
-        return liElement;
-      }
-    });
+    let foundElement;
+    return Array.from(liElements).find(
+      (liElement) => liElement.id === `project-${id}`
+    );
+  }
+  function getTaskWrapper(id) {
+    const liElement = getProject(id);
+    return liElement.querySelector('div[data-id="task-wrapper"]');
   }
 
   function removeProject(id) {
@@ -103,6 +106,7 @@ const projectUI = (() => {
     getProject,
     removeProjectFromTaskForm,
     addProjectToTaskForm,
+    getTaskWrapper,
   };
 })();
 

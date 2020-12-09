@@ -42,6 +42,10 @@ class Todo {
     this._checklist = value;
   }
   static id = 1;
+  _id;
+  get id() {
+    return this._id;
+  }
   constructor(title, description, priority) {
     this._id = Todo.id;
     Todo.id++;
