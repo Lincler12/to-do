@@ -9,6 +9,10 @@ div.content {
   overflow: auto;
   min-height: 100%;
 }
+/*
+div.content-off {
+  display: none;
+} */
 
 .card {
   height: 300px;
