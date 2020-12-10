@@ -48,7 +48,8 @@ const projectUI = (() => {
           toggleTaskBtn.classList.add("toggle-task-btn");
           toggleTaskBtn.src = "./images/icons8-expand-arrow-16.png";
           const projectName = document.createElement("button");
-          projectName.dataset.id = "project-name";
+          projectName.classList.add("project-name");
+          projectName.dataset.id = `projectName-${id}`;
           projectName.textContent = name;
           const removeProjectBtn = document.createElement("button");
           removeProjectBtn.textContent = "-";

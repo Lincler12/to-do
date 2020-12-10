@@ -51,7 +51,7 @@ const appController = (() => {
       console.log(mp.projectList);
     }
 
-    projectUI.projectWrapper.addEventListener("click", (e) => {
+    function removeProject(e) {
       if (e.target.dataset.id === "remove-project") {
         const projectHeader = e.target.parentNode;
         const projectRow = projectHeader.parentNode;
@@ -60,7 +60,28 @@ const appController = (() => {
         deleteProject(parseInt(id));
         //more clean way would be having the same id number in data-id as the li id
       }
-    });
+    }
+    projectUI.projectWrapper.addEventListener("click", removeProject);
+
+    function showProjectTasksOnContent(e) {
+      if (e.target.classList.contains("project-name")) {
+        let projectNameElement = e.target;
+        let projectId = parseInt(projectNameElement.dataset.id.split("-")[1]);
+        let cardArray = taskUI.content.querySelectorAll(".card");
+        cardArray = [
+          ...Array.from(cardArray).map((card) =>
+            parseInt(card.dataset.project) !== projectId
+              ? card.classList.add("card-off")
+              : card.classList.remove("card-off")
+          ),
+        ];
+      }
+    }
+
+    projectUI.projectWrapper.addEventListener(
+      "click",
+      showProjectTasksOnContent
+    );
   })();
 
   const tasks = (() => {
