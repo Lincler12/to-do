@@ -8,6 +8,17 @@ const mp = new MainApp();
 const toggleTaskButtonImage = "./images/icons8-expand-arrow-16.png";
 
 const appController = (() => {
+  let showProjectsWithId = 0;
+  function showTasksOnContent() {
+    let cardArray = taskUI.content.querySelectorAll(".card");
+    cardArray = [
+      ...Array.from(cardArray).map((card) =>
+        parseInt(card.dataset.project) !== showProjectsWithId
+          ? card.classList.add("card-off")
+          : card.classList.remove("card-off")
+      ),
+    ];
+  }
   const project = (() => {
     function getName() {
       return projectUI.inputElement.value;
@@ -20,6 +31,7 @@ const appController = (() => {
       const projectLiElement = document.getElementById("project-0");
       const projectRow = projectLiElement.querySelector(".project-row");
       projectRow.classList.remove("project-row-whitespace");
+      showTasksOnContent();
     };
     defaultProject();
     function addProject(name) {
@@ -63,24 +75,19 @@ const appController = (() => {
     }
     projectUI.projectWrapper.addEventListener("click", removeProject);
 
-    function showProjectTasksOnContent(e) {
+    function updateShowProjectsOnContent(e) {
       if (e.target.classList.contains("project-name")) {
         let projectNameElement = e.target;
-        let projectId = parseInt(projectNameElement.dataset.id.split("-")[1]);
-        let cardArray = taskUI.content.querySelectorAll(".card");
-        cardArray = [
-          ...Array.from(cardArray).map((card) =>
-            parseInt(card.dataset.project) !== projectId
-              ? card.classList.add("card-off")
-              : card.classList.remove("card-off")
-          ),
-        ];
+        showProjectsWithId = parseInt(
+          projectNameElement.dataset.id.split("-")[1]
+        );
+        showTasksOnContent();
       }
     }
 
     projectUI.projectWrapper.addEventListener(
       "click",
-      showProjectTasksOnContent
+      updateShowProjectsOnContent
     );
   })();
 
@@ -110,6 +117,7 @@ const appController = (() => {
         task.description,
         task.priority
       );
+      showTasksOnContent();
     }
 
     function getTitle() {

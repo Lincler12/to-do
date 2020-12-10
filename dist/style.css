@@ -162,7 +162,7 @@ div.project-header {
   gap: 10px;
 }
 
-[data-id="project-name"] {
+button.project-name {
   justify-self: start;
   overflow: auto;
   width: 100%;
@@ -186,9 +186,10 @@ div.task {
   /* grid-template-rows: 20px; */
   /* height: 20px; */
   height: auto;
+  gap: 15px;
   justify-items: left;
   align-items: center;
-  padding: 0 10px 10px 10px;
+  padding: 0 10px 10px 30px;
 }
 
 div.priority-icon {
@@ -204,9 +205,7 @@ div.task-name {
   /* margin-left: 10px; */
   font-size: 14px;
   color: #444444;
-  display: flex;
-  /* justify-content: left; */
-  align-items: flex-end;
+  text-transform: capitalize;
 }
 
 .get-project-name {
