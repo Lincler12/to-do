@@ -22,7 +22,15 @@ class Project {
     this._todoList.push(todo);
   };
 
-  deleteTodo() {}
+  deleteTodo(id) {
+    let newArray = [];
+    for (let i = 0; i < this._todoList.length; i++) {
+      if (!this._todoList[i].id === id) {
+        newArray.push(this._todoList[i]);
+      }
+    }
+    this._todoList = [...newArray];
+  }
 }
 
 export { Project };

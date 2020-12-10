@@ -14,6 +14,18 @@ const taskUI = (() => {
     todoModal.classList.toggle("add-todo-modal-off");
   }
 
+  function getTasksByProjectId(projectId) {
+    return document.querySelectorAll(`div[data-project="${projectId}"]`);
+  }
+
+  function getTaskById(id) {
+    return document.getElementById(`card-${id}`);
+  }
+
+  function getNavTaskById(id) {
+    return document.getElementById(`navTask-${id}`);
+  }
+
   const createTask = (id, projectId, title, description, priorityIn) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -43,6 +55,7 @@ const taskUI = (() => {
         h4.textContent = title;
         const deleteTaskBtn = document.createElement("button");
         deleteTaskBtn.classList.add("button2");
+        deleteTaskBtn.textContent = "-";
         cardHeader.appendChild(h4);
         cardHeader.appendChild(deleteTaskBtn);
       }
@@ -96,6 +109,9 @@ const taskUI = (() => {
     formProjectElement,
     closeTaskInputForm,
     createTask,
+    getTasksByProjectId,
+    content,
+    getNavTaskById,
   };
 })();
 

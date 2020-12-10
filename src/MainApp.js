@@ -5,6 +5,10 @@ class MainApp {
     this._projectList.push(project);
   };
 
+  getProject(id) {
+    return this._projectList.find((project) => project.id === id);
+  }
+
   updateProjectName = (name, id) => {
     this._projectList.forEach((project) => {
       if (project.id === id) {

@@ -44,6 +44,10 @@ const appController = (() => {
       mp.removeProject(id);
       projectUI.removeProject(id);
       projectUI.removeProjectFromTaskForm(id);
+      let array = taskUI.getTasksByProjectId(id);
+      array.forEach((element) => {
+        element.remove();
+      });
       console.log(mp.projectList);
     }
 
@@ -107,6 +111,22 @@ const appController = (() => {
       let element = taskUI.formProjectElement;
       return parseInt(element.value);
     }
+
+    taskUI.content.addEventListener("click", (e) => {
+      if (e.target.classList.contains("button2")) {
+        let card = e.target.parentNode.parentNode;
+        let cardId = card.id; //'card-${id}'
+        let projectId = parseInt(card.dataset.project);
+        //e.target.parentNode, is on the content, we need to delete the task from the navbar also, and update the todo list
+        let taskId = cardId.split("-")[1];
+        card.remove(); //delete task from content
+        taskUI.getNavTaskById(taskId).remove(); //delete task from sidenav
+        let projectOfTask = mp.getProject(projectId);
+        console.log(projectOfTask._todoList);
+        projectOfTask.deleteTodo(taskId); //delete task from project todo list
+        console.log(projectOfTask._todoList);
+      }
+    });
 
     taskUI.addTodoForm.addEventListener("submit", (e) => {
       e.preventDefault();

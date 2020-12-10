@@ -5,12 +5,6 @@ const projectUI = (() => {
   const getProjectName = document.getElementById("get-project-name");
   const sidenav = document.getElementById("sidenav");
 
-  function createContentForProject(projectId) {
-    const content = document.createElement("div");
-    content.id = `content-${id}`;
-    content.classList.add("content");
-  }
-
   function closeProjectInputName() {
     addProjectForm.reset();
     const getProjectName = document.getElementById("get-project-name");
