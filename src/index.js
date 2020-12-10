@@ -64,16 +64,13 @@ const appController = (() => {
       let task = new Todo(taskName, taskDescr, taskPrio, projectId);
       console.table(mp.projectList);
       let array = mp.projectList;
-      // let findElement = mp.projectList.find((e) => e.id > 20);
       for (let i = 0; i < array.length; i++) {
         if (array[i].id === projectId) {
           array[i].addTodo(task);
           break;
         }
       }
-      // mp.projectList
-      //   .find((projectArrayElement) => projectArrayElement.id === projectId)
-      //   .addToDo(task); //reference to object inside the array
+      // ToDo(task); //reference to object inside the array
       const taskDOMNavElement = taskUI.createTaskNavBar(
         task.id,
         task.title,
@@ -81,6 +78,13 @@ const appController = (() => {
       );
       const taskWrapper = projectUI.getTaskWrapper(projectId);
       taskWrapper.appendChild(taskDOMNavElement);
+      taskUI.createTask(
+        task.id,
+        projectId,
+        task.title,
+        task.description,
+        task.priority
+      );
     }
 
     function getTitle() {

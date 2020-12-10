@@ -14,13 +14,30 @@ const taskUI = (() => {
     todoModal.classList.toggle("add-todo-modal-off");
   }
 
-  const createTask = (id, title, description, priority) => {
+  const createTask = (id, projectId, title, description, priorityIn) => {
     const card = document.createElement("div");
     card.classList.add("card");
     card.id = `card-${id}`;
+    card.dataset.project = projectId; //it will work as a filter
     {
       const cardHeader = document.createElement("div");
       cardHeader.classList.add("card-header");
+
+      switch (priorityIn) {
+        case priority.LOW.text: {
+          cardHeader.style.backgroundColor = priority.LOW.color;
+          break;
+        }
+        case priority.MEDIUM.text: {
+          cardHeader.style.backgroundColor = priority.MEDIUM.color;
+          break;
+        }
+        case priority.HIGH.text: {
+          cardHeader.style.backgroundColor = priority.HIGH.color;
+          break;
+        }
+      }
+
       {
         const h4 = document.createElement("h4");
         h4.textContent = title;
@@ -31,6 +48,9 @@ const taskUI = (() => {
       }
       const cardBody = document.createElement("textarea");
       cardBody.classList.add("card-body");
+      cardBody.value = description;
+      card.appendChild(cardHeader);
+      card.appendChild(cardBody);
     }
     content.appendChild(card);
   };
@@ -38,7 +58,7 @@ const taskUI = (() => {
   const createTaskNavBar = (id, title, priorityIn) => {
     const taskElement = document.createElement("div");
     taskElement.classList.add("task");
-    taskElement.id = `navTask-${id}`;
+    taskElement.id = `navTask-${id}`; //task-id
     {
       const priorityIcon = document.createElement("div");
       priorityIcon.classList.add("priority-icon");
@@ -75,6 +95,7 @@ const taskUI = (() => {
     formTitleElement,
     formProjectElement,
     closeTaskInputForm,
+    createTask,
   };
 })();
 
