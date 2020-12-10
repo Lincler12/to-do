@@ -1,6 +1,9 @@
 class Project {
   static id = 1;
   _todoList = [];
+  get todoList() {
+    return this._todoList;
+  }
   _id;
   get id() {
     return this._id;

@@ -112,19 +112,35 @@ const appController = (() => {
       return parseInt(element.value);
     }
 
-    taskUI.content.addEventListener("click", (e) => {
+    function removeCard(e) {
       if (e.target.classList.contains("button2")) {
         let card = e.target.parentNode.parentNode;
         let cardId = card.id; //'card-${id}'
         let projectId = parseInt(card.dataset.project);
         //e.target.parentNode, is on the content, we need to delete the task from the navbar also, and update the todo list
-        let taskId = cardId.split("-")[1];
+        let taskId = parseInt(cardId.split("-")[1]);
         card.remove(); //delete task from content
         taskUI.getNavTaskById(taskId).remove(); //delete task from sidenav
         let projectOfTask = mp.getProject(projectId);
         console.log(projectOfTask._todoList);
         projectOfTask.deleteTodo(taskId); //delete task from project todo list
         console.log(projectOfTask._todoList);
+      }
+    }
+    taskUI.content.addEventListener("click", removeCard);
+    taskUI.content.addEventListener("change", (e) => {
+      if (e.target.classList.contains("card-body")) {
+        let cardBody = e.target;
+        let card = e.target.parentNode;
+        let cardId = card.id;
+        let taskId = parseInt(cardId.split("-")[1]);
+        let projectId = parseInt(card.dataset.project);
+        //we need to save the text from cardbody to the todo description
+        let todoElement = mp
+          .getProject(projectId)
+          .todoList.find((todo) => todo.id === taskId);
+        todoElement.description = cardBody.value;
+        console.log(mp.getProject(projectId).todoList);
       }
     });
 
